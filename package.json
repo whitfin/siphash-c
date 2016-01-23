@@ -1,0 +1,18 @@
+{
+  "name": "siphash",
+  "version": "1.0.0",
+  "repo": "zackehh/siphash-c",
+  "description": "SipHash-C-D implementation in C89 with CLI bindings",
+  "keywords": [
+    "cli",
+    "crypto",
+    "hashing",
+    "siphash"
+  ],
+  "license": "MIT",
+  "src": [
+    "src/siphash.c",
+    "src/siphash.h"
+  ],
+  "makefile": "Makefile"
+}
