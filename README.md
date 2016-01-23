@@ -1,6 +1,6 @@
 # SipHash
 
-[![Build Status](https://travis-ci.org/zackehh/siphash-c.svg?branch=master)](https://travis-ci.org/zackehh/siphash-c) [![Coverage Status](https://coveralls.io/repos/zackehh/siphash-c/badge.svg?branch=master&service=github)](https://coveralls.io/github/zackehh/siphash-c?branch=master)
+[![Build Status](https://travis-ci.org/zackehh/siphash-c.svg?branch=master)](https://travis-ci.org/zackehh/siphash-c)
 
 A C89 implementation of the SipHash cryptographic hash family. Supports any variation, although defaults to the widely used SipHash-2-4.
 
