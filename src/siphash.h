@@ -3,6 +3,6 @@
 
 #include <inttypes.h>
 
-extern uint64_t siphash(char key[16], char data[], int c, int d);
+extern uint64_t siphash(const char key[16], const char data[], unsigned int c, unsigned int d, size_t data_len);
 
 #endif

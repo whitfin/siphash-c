@@ -11,14 +11,14 @@ int main(int argc, char *argv[]){
 		char* key = NULL;
 		char* input = NULL;
 
-		int c = 0, d = 0, option = 0;
+		int c = 0, d = 0, option = 0, input_len = 0;
 
 		if (argc < 2) {
-				printf("Usage: siphash -k <key> [-i <input> | -f <filepath>] [-c=2] [-d=4]\n");
+				printf("Usage: siphash -k <key> [-i <input> | -f <filepath>] [-c=2] [-d=4] [-l=0]\n");
 				return 1;
 		}
 
-		while ((option = getopt(argc, argv, "f:k:i:c:d:")) != -1) {
+		while ((option = getopt(argc, argv, "f:k:i:c:d:l:")) != -1) {
 				switch (option) {
 						case 'c':
 								c = atoi(optarg);
@@ -44,11 +44,15 @@ int main(int argc, char *argv[]){
 						case 'k':
 								key = optarg;
 								break;
+						case 'l':
+								input_len = atoi(optarg);
+								break;
+
 				}
 		}
 
 		if (key == NULL || input == NULL) {
-				printf("Usage: siphash -k <key> [-i <input> | -f <filepath>] [-c=2] [-d=4]\n");
+				printf("Usage: siphash -k <key> [-i <input> | -f <filepath>] [-c=2] [-d=4] [-l=0]\n");
 				return 1;
 		}
 
@@ -65,7 +69,7 @@ int main(int argc, char *argv[]){
 				d = 4;
 		}
 
-		printf("%" PRIu64 "\n", siphash(key, input, c, d));
+		printf("%" PRIu64 "\n", siphash(key, input, c, d, input_len));
 
     return 0;
 }
