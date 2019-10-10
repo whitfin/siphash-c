@@ -36,7 +36,7 @@
    ((uint64_t)((p)[4]) << 32) | ((uint64_t)((p)[5]) << 40) |                   \
    ((uint64_t)((p)[6]) << 48) | ((uint64_t)((p)[7]) << 56))
 
-uint64_t siphash(const char key[16], char data[], unsigned int c, unsigned int d, size_t data_len){
+uint64_t siphash(const char key[16], const char data[], unsigned int c, unsigned int d, size_t data_len){
     uint64_t k0 = U8TO64_LE(key);
     uint64_t k1 = U8TO64_LE(key + 8);
 
