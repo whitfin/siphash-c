@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
 		char* key = NULL;
 		char* input = NULL;
 
-		unsigned int c = 0, d = 0, option = 0, input_len = 0;
+		int c = 0, d = 0, option = 0, input_len = 0;
 
 		if (argc < 2) {
 				printf("Usage: siphash -k <key> [-i <input> | -f <filepath>] [-c=2] [-d=4] [-l=0]\n");
