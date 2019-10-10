@@ -23,7 +23,7 @@
 #define DIGEST_BLOCK            \
   v3 ^= m;                      \
   do {                          \
-    int i;                      \
+    size_t i;                      \
     for(i = 0; i < c; i++){     \
       COMPRESS                  \
     }                           \
@@ -36,7 +36,7 @@
    ((uint64_t)((p)[4]) << 32) | ((uint64_t)((p)[5]) << 40) |                   \
    ((uint64_t)((p)[6]) << 48) | ((uint64_t)((p)[7]) << 56))
 
-uint64_t siphash(char key[16], char data[], int c, int d){
+uint64_t siphash(const char key[16], char data[], unsigned int c, unsigned int d, size_t data_len){
     uint64_t k0 = U8TO64_LE(key);
     uint64_t k1 = U8TO64_LE(key + 8);
 
@@ -47,7 +47,19 @@ uint64_t siphash(char key[16], char data[], int c, int d){
 
     uint64_t m = 0;
 
-    int i, iter = 0, index = 0, len = strlen(data);
+    size_t i, iter = 0, index = 0, len;
+
+    /*
+      If the length argument is set to 0, the program will consider it not
+      provided and use the strlen as a best guess for the lenfth of the data.
+      This may cause the program to break with certain inputs.
+    */
+    if (data_len == 0) {
+      len = strlen(data);
+    }
+    else {
+      len = data_len;
+    }
 
     for (; index < len; index++) {
         m |= ((uint64_t) data[index]) << (iter++ * 8);
